@@ -6,6 +6,7 @@
 #import "Game.h"
 #import "Ball.h"
 #import "Paddle.h"
+#import "ScoreBoard.h"
 
 // --- private interface ---------------------------------------------------------------------------
 
@@ -27,6 +28,9 @@
     SPQuad *mBackground;
     Paddle *mPaddleL;
     SPQuad *mPaddleR;
+    ScoreBoard *mScoreBoard;
+    int mLeftScore;
+    int mRightScore;
 }
 
 - (id)init
@@ -60,11 +64,25 @@
     mPaddleR = [[Paddle alloc] init];
     mPaddleR.x = mBackground.width-mPaddleR.width;
     [self addChild:mPaddleR];
-
+    
+    mScoreBoard = [[ScoreBoard alloc] init];
+    mScoreBoard.x = mBackground.width/2;
+    mScoreBoard.y = mScoreBoard.height/2;
+    [self addChild:mScoreBoard];
+    mLeftScore = 0;
+    mRightScore = 0;
+    [self setScoreText];
     
     [self addEventListener:@selector(onEnterFrame:) atObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
     [self addEventListener:@selector(onRightLoss:) atObject:self forType:EVENT_TYPE_RIGHT_LOSS];
     [self addEventListener:@selector(onLeftLoss:) atObject:self forType:EVENT_TYPE_LEFT_LOSS];
+    
+    [self addEventListener:@selector(onResize:) atObject:self forType:SP_EVENT_TYPE_RESIZE];
+}
+
+- (void)setScoreText {
+    NSString *newText = [NSString stringWithFormat:@"%i | %i", mLeftScore, mRightScore];
+    mScoreBoard.text = newText;
 }
 
 - (void)onEnterFrame:(SPEnterFrameEvent *)event {
@@ -78,10 +96,14 @@
 
 - (void)onRightLoss:(SPEvent *)event {
     NSLog(@"Right side lost this point.");
+    mLeftScore += 1;
+    [self setScoreText];
 }
 
 - (void)onLeftLoss:(SPEvent *)event {
     NSLog(@"Left side lost this point.");
+    mRightScore += 1;
+    [self setScoreText];
 }
 
 - (void)updateLocations

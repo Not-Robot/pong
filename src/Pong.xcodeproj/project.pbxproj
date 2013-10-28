@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15683B73181E40D700D6A9D4 /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 15683B72181E40D700D6A9D4 /* ScoreBoard.m */; };
 		15683B77181E4A0B00D6A9D4 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 15683B76181E4A0B00D6A9D4 /* Ball.m */; };
 		15683B7B181E563700D6A9D4 /* Paddle.m in Sources */ = {isa = PBXBuildFile; fileRef = 15683B7A181E563700D6A9D4 /* Paddle.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -67,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15683B71181E40D700D6A9D4 /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreBoard.h; sourceTree = "<group>"; };
+		15683B72181E40D700D6A9D4 /* ScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBoard.m; sourceTree = "<group>"; };
 		15683B75181E4A0B00D6A9D4 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
 		15683B76181E4A0B00D6A9D4 /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
 		15683B79181E563700D6A9D4 /* Paddle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paddle.h; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 		DE4F80D714E153EA00655D44 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				15683B71181E40D700D6A9D4 /* ScoreBoard.h */,
+				15683B72181E40D700D6A9D4 /* ScoreBoard.m */,
 				15683B79181E563700D6A9D4 /* Paddle.h */,
 				15683B7A181E563700D6A9D4 /* Paddle.m */,
 				15683B75181E4A0B00D6A9D4 /* Ball.h */,
@@ -386,6 +391,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				15683B7B181E563700D6A9D4 /* Paddle.m in Sources */,
 				DE4A3DE510FFB2AF00FDA492 /* Game.m in Sources */,
+				15683B73181E40D700D6A9D4 /* ScoreBoard.m in Sources */,
 				DE4F80D614E153E600655D44 /* Media.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
