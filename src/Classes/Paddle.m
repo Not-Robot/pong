@@ -29,13 +29,20 @@
 - (void)setup {
     self.y = Sparrow.stage.height/2;
     self.pivotY = self.height/2;
+    self.pivotX = self.width/2;
     [self addEventListener:@selector(onPaddleTouched:) atObject:self forType:SP_EVENT_TYPE_TOUCH];
 }
 
 - (void)onPaddleTouched:(SPTouchEvent * )event {
     SPTouch *touch = [[event.touches allObjects] objectAtIndex:0];
     SPPoint *localTouchPosition = [touch locationInSpace:self.parent];
-    self.y = localTouchPosition.y;
+    if (localTouchPosition.y < self.height/2) {
+        self.y = self.height/2;
+    } else if (localTouchPosition.y > Sparrow.stage.height-self.height/2) {
+        self.y = Sparrow.stage.height-self.height/2;
+    } else {
+        self.y = localTouchPosition.y;
+    }
 }
 
 

@@ -53,16 +53,16 @@
     mBackground = [[SPQuad alloc] initWithWidth:Sparrow.stage.width height:Sparrow.stage.height color:0x000000];
     [self addChild:mBackground];
     mBall = [[Ball alloc] init];
-    mBall.x = mBackground.width/2-mBall.width/2;
-    mBall.y = mBackground.height/2-mBall.height/2;
+    mBall.x = mBackground.width/2;
+    mBall.y = mBackground.height/2;
     [self addChild:mBall];
     
     mPaddleL = [[Paddle alloc] init];
-    mPaddleL.x = 0;
+    mPaddleL.x = mPaddleL.width/2;
     [self addChild:mPaddleL];
     
     mPaddleR = [[Paddle alloc] init];
-    mPaddleR.x = mBackground.width-mPaddleR.width;
+    mPaddleR.x = mBackground.width-mPaddleR.width/2;
     [self addChild:mPaddleR];
     
     mScoreBoard = [[ScoreBoard alloc] init];
@@ -90,6 +90,11 @@
     BOOL hitRight = [mBall.bounds intersectsRectangle:mPaddleR.bounds];
     
     if (hitLeft || hitRight) {
+        if (mBall.x < mBall.width/2+mPaddleL.width) {
+            mBall.x = mBall.width+mPaddleL.width;
+        } else if (mBall.x > mBackground.width-(mBall.width/2+mPaddleR.width)) {
+            mBall.x = mBackground.width-(mBall.width/2+mPaddleR.width);
+        }
         [mBall paddled];
     }
 }
