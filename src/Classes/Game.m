@@ -53,7 +53,6 @@
     mBall.y = mBackground.height/2-mBall.height/2;
     [self addChild:mBall];
     
-    // do left paddle
     mPaddleL = [[Paddle alloc] init];
     mPaddleL.x = 0;
     [self addChild:mPaddleL];
@@ -63,7 +62,26 @@
     [self addChild:mPaddleR];
 
     
-//    [self addEventListener:@selector(onEnterFrame:) atObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
+    [self addEventListener:@selector(onEnterFrame:) atObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
+    [self addEventListener:@selector(onRightLoss:) atObject:self forType:EVENT_TYPE_RIGHT_LOSS];
+    [self addEventListener:@selector(onLeftLoss:) atObject:self forType:EVENT_TYPE_LEFT_LOSS];
+}
+
+- (void)onEnterFrame:(SPEnterFrameEvent *)event {
+    BOOL hitLeft = [mBall.bounds intersectsRectangle:mPaddleL.bounds];
+    BOOL hitRight = [mBall.bounds intersectsRectangle:mPaddleR.bounds];
+    
+    if (hitLeft || hitRight) {
+        [mBall paddled];
+    }
+}
+
+- (void)onRightLoss:(SPEvent *)event {
+    NSLog(@"Right side lost this point.");
+}
+
+- (void)onLeftLoss:(SPEvent *)event {
+    NSLog(@"Left side lost this point.");
 }
 
 - (void)updateLocations

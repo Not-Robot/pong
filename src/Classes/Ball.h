@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#define EVENT_TYPE_RIGHT_LOSS @"rightLoss"
+#define EVENT_TYPE_LEFT_LOSS @"leftLoss"
+
 @interface Ball : SPQuad
+
+- (void)paddled;
 
 @end
