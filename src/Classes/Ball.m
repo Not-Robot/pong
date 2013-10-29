@@ -62,14 +62,12 @@
         //xVel = -xVel;
         [self reset];
         // fire off right loss
-        SPEvent *lossEvent = [SPEvent eventWithType:EVENT_TYPE_RIGHT_LOSS];
-        [self.parent dispatchEvent:lossEvent];
+        [self dispatchEvent:[SPEvent eventWithType:EVENT_TYPE_RIGHT_LOSS bubbles:YES]];
     } else if (self.x < 0) {
         //xVel = -xVel;
         [self reset];
         // fire off left loss
-        SPEvent *lossEvent = [SPEvent eventWithType:EVENT_TYPE_LEFT_LOSS];
-        [self.parent dispatchEvent:lossEvent];
+        [self dispatchEvent:[SPEvent eventWithType:EVENT_TYPE_LEFT_LOSS bubbles:YES]];
     }
 }
 
