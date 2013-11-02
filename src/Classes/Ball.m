@@ -30,14 +30,16 @@
 
 - (void)reset {
     // init physics stuff
-    xVel = 5;
-    yVel = 5;
+    xVel = 80;
+    yVel = 80;
     self.x = Sparrow.stage.width/2;
     self.y = Sparrow.stage.height/2;
 }
 
 - (void)setup {
     [self reset];
+    self.pivotY = self.height/2;
+    self.pivotX = self.width/2;
     
     [self addEventListener:@selector(onEnterFrame:) atObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
 }
@@ -47,23 +49,23 @@
 }
 
 - (void) onEnterFrame:(SPEnterFrameEvent *)event {
-    self.x += xVel;
-    self.y += yVel;
+    self.x += xVel*event.passedTime;
+    self.y += yVel*event.passedTime;
     
-    if (self.y > Sparrow.stage.height-self.height) {
+    if (self.y > Sparrow.stage.height-self.height/2) {
         yVel = -yVel;
-        self.y = Sparrow.stage.height-self.height;
-    } else if (self.y < 0) {
+        self.y = Sparrow.stage.height-self.height/2;
+    } else if (self.y < self.height/2) {
         yVel = -yVel;
-        self.y = 0;
+        self.y = self.height/2;
     }
     
-    if (self.x > Sparrow.stage.width-self.width) {
+    if (self.x > Sparrow.stage.width-self.width/2) {
         //xVel = -xVel;
         [self reset];
         // fire off right loss
         [self dispatchEvent:[SPEvent eventWithType:EVENT_TYPE_RIGHT_LOSS bubbles:YES]];
-    } else if (self.x < 0) {
+    } else if (self.x < self.width/2) {
         //xVel = -xVel;
         [self reset];
         // fire off left loss
