@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 @interface GameScene : SPSprite
+=======
+@interface GameScene : NSObject
+>>>>>>> gamescene created, game moved there. Game is now manager of scenes.
 
 @end

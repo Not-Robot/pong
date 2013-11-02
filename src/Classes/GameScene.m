@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+<<<<<<< HEAD
 #import "Paddle.h"
 #import "Ball.h"
 #import "ScoreBoard.h"
@@ -104,5 +105,9 @@
     mRightScore += 1;
     [self setScoreText];
 }
+=======
+
+@implementation GameScene
+>>>>>>> gamescene created, game moved there. Game is now manager of scenes.
 
 @end
