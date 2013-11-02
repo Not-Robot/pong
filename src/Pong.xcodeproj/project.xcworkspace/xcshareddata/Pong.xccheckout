@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>DD9BFAF1-D18E-4612-8737-64D6AF2EE2B0</string>
+	<string>C0B30753-FE23-45E7-8F36-851FF00ACF17</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Pong</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>6709FF40-D7AF-4C3B-B347-70DE6F64A823</key>
-		<string>ssh://gitlab.flat-line.net/pong-sparrow.git</string>
+		<key>5CF3C27B-6854-4FC6-A366-BA26CB0E7B3A</key>
+		<string>ssh://github.com/Not-Robot/pong.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>src/Pong.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>6709FF40-D7AF-4C3B-B347-70DE6F64A823</key>
+		<key>5CF3C27B-6854-4FC6-A366-BA26CB0E7B3A</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://gitlab.flat-line.net/pong-sparrow.git</string>
+	<string>ssh://github.com/Not-Robot/pong.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>6709FF40-D7AF-4C3B-B347-70DE6F64A823</string>
+	<string>5CF3C27B-6854-4FC6-A366-BA26CB0E7B3A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6709FF40-D7AF-4C3B-B347-70DE6F64A823</string>
+			<string>5CF3C27B-6854-4FC6-A366-BA26CB0E7B3A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>pong</string>
+			<string>pong-inc</string>
 		</dict>
 	</array>
 </dict>
