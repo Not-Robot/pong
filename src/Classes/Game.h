@@ -8,4 +8,6 @@
 
 @interface Game : SPSprite
 
+- (void)showGameScene;
+
 @end
