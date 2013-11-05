@@ -10,6 +10,8 @@
 #import "Paddle.h"
 #import "Ball.h"
 #import "ScoreBoard.h"
+#import "SimpleButton.h"
+#import "Game.h"
 
 @interface GameScene ()
 
@@ -27,10 +29,11 @@
     ScoreBoard *mScoreBoard;
     int mLeftScore;
     int mRightScore;
+    BOOL mHasAI;
+    int mPaddleVel;
 }
 
-- (id)init
-{
+- (id)init {
     if ((self = [super init]))
     {
         [self setup];
@@ -69,9 +72,24 @@
     mRightScore = 0;
     [self setScoreText];
     
+    SimpleButton *quit = [[SimpleButton alloc] init];
+    quit.text = @"Quit";
+    quit.y = quit.height;
+    quit.x = mBackground.width-quit.width*2;
+    [quit addEventListener:@selector(quitGame:) atObject:self forType:SP_EVENT_TYPE_TRIGGERED];
+    [self addChild:quit];
+    
+    [self setAI:NO];
+    
+    mPaddleVel = 70;
+    
     [self addEventListener:@selector(onEnterFrame:) atObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
     [self addEventListener:@selector(onRightLoss:) atObject:self forType:EVENT_TYPE_RIGHT_LOSS];
     [self addEventListener:@selector(onLeftLoss:) atObject:self forType:EVENT_TYPE_LEFT_LOSS];
+}
+
+- (void)setAI:(BOOL)hasAI {
+    mHasAI = hasAI;
 }
 
 - (void)setScoreText {
@@ -91,18 +109,43 @@
         }
         [mBall paddled];
     }
+    
+    if (mHasAI) {
+        int dir = mBall.y-mPaddleR.y;
+        if (mPaddleR.y > mPaddleR.height/2 || mPaddleR.y < mBackground.height-mPaddleR.height/2) {
+            if (dir > 0) {
+                mPaddleR.y += mPaddleVel*event.passedTime;
+            } else if (dir < 0) {
+                mPaddleR.y -= mPaddleVel*event.passedTime;
+            }
+        }
+    }
+}
+
+- (void)quitGame:(SPEvent *)event {
+    [(Game *)self.parent showMenuScene];
 }
 
 - (void)onRightLoss:(SPEvent *)event {
     NSLog(@"Right side lost this point.");
     mLeftScore += 1;
     [self setScoreText];
+    [self checkWin];
 }
 
 - (void)onLeftLoss:(SPEvent *)event {
     NSLog(@"Left side lost this point.");
     mRightScore += 1;
     [self setScoreText];
+    [self checkWin];
+}
+
+- (void)checkWin {
+    if (mLeftScore > 4) {
+        [(Game *)self.parent showMenuScene];
+    } else if (mRightScore > 4) {
+        [(Game *)self.parent showMenuScene];
+    }
 }
 
 @end

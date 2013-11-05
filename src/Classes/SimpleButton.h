@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SimpleButton : NSObject
+@interface SimpleButton : SPButton
 
 @end

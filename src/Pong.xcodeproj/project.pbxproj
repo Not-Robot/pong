@@ -12,6 +12,7 @@
 		15683B79182598F300D6A9D4 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 15683B78182598F300D6A9D4 /* GameScene.m */; };
 		15683B7B181E563700D6A9D4 /* Paddle.m in Sources */ = {isa = PBXBuildFile; fileRef = 15683B7A181E563700D6A9D4 /* Paddle.m */; };
 		15683B7E18259CD300D6A9D4 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 15683B7D18259CD300D6A9D4 /* MenuScene.m */; };
+		15683B821826DEA100D6A9D4 /* SimpleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 15683B811826DEA100D6A9D4 /* SimpleButton.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -80,6 +81,8 @@
 		15683B7A181E563700D6A9D4 /* Paddle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paddle.m; sourceTree = "<group>"; };
 		15683B7C18259CD300D6A9D4 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		15683B7D18259CD300D6A9D4 /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
+		15683B801826DEA100D6A9D4 /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
+		15683B811826DEA100D6A9D4 /* SimpleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleButton.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 		DE4F80D714E153EA00655D44 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				15683B801826DEA100D6A9D4 /* SimpleButton.h */,
+				15683B811826DEA100D6A9D4 /* SimpleButton.m */,
 				15683B7C18259CD300D6A9D4 /* MenuScene.h */,
 				15683B7D18259CD300D6A9D4 /* MenuScene.m */,
 				15683B77182598F300D6A9D4 /* GameScene.h */,
@@ -399,6 +404,7 @@
 				15683B77181E4A0B00D6A9D4 /* Ball.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				15683B821826DEA100D6A9D4 /* SimpleButton.m in Sources */,
 				15683B7B181E563700D6A9D4 /* Paddle.m in Sources */,
 				DE4A3DE510FFB2AF00FDA492 /* Game.m in Sources */,
 				15683B73181E40D700D6A9D4 /* ScoreBoard.m in Sources */,

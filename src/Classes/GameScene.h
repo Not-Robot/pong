@@ -10,4 +10,6 @@
 
 @interface GameScene : SPSprite
 
+- (void)setAI:(BOOL)hasAI;
+
 @end
