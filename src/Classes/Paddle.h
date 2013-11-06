@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Paddle : SPQuad
+#define PONG_PADDLE_VELOCITY 140
+#define PONG_PADDLE_DEADZONE 5
 
+@interface Paddle : SPQuad
+    @property int mPosition;
+
+    - (void)move:(int)position;
+    - (void)think:(float)deltaTime;
 @end

@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "Paddle.h"
+#import "PaddleController.h"
 #import "Ball.h"
 #import "ScoreBoard.h"
 #import "SimpleButton.h"
@@ -25,7 +26,9 @@
     Ball *mBall;
     SPQuad *mBackground;
     Paddle *mPaddleL;
-    SPQuad *mPaddleR;
+    Paddle *mPaddleR;
+    PaddleController *mPCtlL;
+    PaddleController *mPCtlR;
     ScoreBoard *mScoreBoard;
     int mLeftScore;
     int mRightScore;
@@ -59,11 +62,19 @@
     mPaddleL = [[Paddle alloc] init];
     mPaddleL.x = mPaddleL.width/2;
     [self addChild:mPaddleL];
+
+    mPCtlL   = [[PaddleController alloc] init:mPaddleL];
+    mPCtlL.x = mPCtlL.width/2;
+    [self addChild:mPCtlL];
     
     mPaddleR = [[Paddle alloc] init];
     mPaddleR.x = mBackground.width-mPaddleR.width/2;
     [self addChild:mPaddleR];
     
+    mPCtlR   = [[PaddleController alloc] init:mPaddleR];
+    mPCtlR.x = mBackground.width-mPCtlR.width/2;
+    [self addChild:mPCtlR];
+
     mScoreBoard = [[ScoreBoard alloc] init];
     mScoreBoard.x = mBackground.width/2;
     mScoreBoard.y = mScoreBoard.height/2;
@@ -120,6 +131,9 @@
             }
         }
     }
+
+    [mPaddleR think:event.passedTime];
+    [mPaddleL think:event.passedTime];
 }
 
 - (void)quitGame:(SPEvent *)event {

@@ -44,6 +44,7 @@
 		DE4F80EE14E1541400655D44 /* atlas@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = DE4F80E414E1541400655D44 /* atlas@2x.xml */; };
 		DE5C4E6E138ED109004892CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5C4E6D138ED109004892CA /* libz.dylib */; };
 		DEAAF3DF16BC114D004EB9D5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAAF3DE16BC114D004EB9D5 /* GLKit.framework */; };
+		E48A0DEE182A194A00DD707A /* PaddleController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48A0DED182A194A00DD707A /* PaddleController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,8 @@
 		DE4F80E414E1541400655D44 /* atlas@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "atlas@2x.xml"; sourceTree = "<group>"; };
 		DE5C4E6D138ED109004892CA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DEAAF3DE16BC114D004EB9D5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		E48A0DEC182A194A00DD707A /* PaddleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddleController.h; sourceTree = "<group>"; };
+		E48A0DED182A194A00DD707A /* PaddleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddleController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +249,8 @@
 				15683B7D18259CD300D6A9D4 /* MenuScene.m */,
 				15683B77182598F300D6A9D4 /* GameScene.h */,
 				15683B78182598F300D6A9D4 /* GameScene.m */,
+				E48A0DEC182A194A00DD707A /* PaddleController.h */,
+				E48A0DED182A194A00DD707A /* PaddleController.m */,
 				15683B71181E40D700D6A9D4 /* ScoreBoard.h */,
 				15683B72181E40D700D6A9D4 /* ScoreBoard.m */,
 				15683B79181E563700D6A9D4 /* Paddle.h */,
@@ -405,6 +410,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				15683B821826DEA100D6A9D4 /* SimpleButton.m in Sources */,
+				E48A0DEE182A194A00DD707A /* PaddleController.m in Sources */,
 				15683B7B181E563700D6A9D4 /* Paddle.m in Sources */,
 				DE4A3DE510FFB2AF00FDA492 /* Game.m in Sources */,
 				15683B73181E40D700D6A9D4 /* ScoreBoard.m in Sources */,
