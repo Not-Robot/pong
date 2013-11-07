@@ -8,6 +8,7 @@
 
 @interface Game : SPSprite
 
-- (void)showGameScene;
+- (void)showGameScenewithAI:(BOOL)hasAI;
+- (void)showMenuScene;
 
 @end

@@ -44,9 +44,6 @@
 }
 
 - (void)setup {
-    mGameScene = [[GameScene alloc] init];
-    //[self showScene:gameScene];
-    
     mMenuScene = [[MenuScene alloc] init];
     [self showScene:mMenuScene];
     
@@ -65,8 +62,14 @@
     mCurrentScene = scene;
 }
 
-- (void)showGameScene {
+- (void)showGameScenewithAI:(BOOL)hasAI {
+    mGameScene = [[GameScene alloc] init];
+    [mGameScene setAI:hasAI];
     [self showScene:mGameScene];
+}
+
+- (void)showMenuScene {
+    [self showScene:mMenuScene];
 }
 
 - (void)updateLocations
