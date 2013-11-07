@@ -40,7 +40,21 @@
 - (void)think:(float)deltaTime {
     int direction = self.mPosition - self.y;
     if (abs(direction) > PONG_PADDLE_DEADZONE) {
-        self.y += (direction > 0 ? 1 : -1) * PONG_PADDLE_VELOCITY * deltaTime;
+        direction = (direction > 0 ? 1 : -1);
+        float distance = self.y + direction * PONG_PADDLE_VELOCITY * deltaTime;
+        if (direction < 0) {
+            if (distance + (direction * self.height/2) > 0) {
+                self.y = distance;
+            } else {
+                self.y = self.height/2;
+            }
+        } else {
+            if (distance + (direction * self.height/2) < Sparrow.stage.height) {
+                self.y = distance;
+            } else {
+                self.y = Sparrow.stage.height - self.height/2;
+            }
+        }
     }
 }
 @end
