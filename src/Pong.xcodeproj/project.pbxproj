@@ -45,6 +45,7 @@
 		DE5C4E6E138ED109004892CA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5C4E6D138ED109004892CA /* libz.dylib */; };
 		DEAAF3DF16BC114D004EB9D5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEAAF3DE16BC114D004EB9D5 /* GLKit.framework */; };
 		E48A0DEE182A194A00DD707A /* PaddleController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48A0DED182A194A00DD707A /* PaddleController.m */; };
+		E48B9123182EAD1800C69515 /* AIController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48B9122182EAD1800C69515 /* AIController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,8 @@
 		DEAAF3DE16BC114D004EB9D5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		E48A0DEC182A194A00DD707A /* PaddleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddleController.h; sourceTree = "<group>"; };
 		E48A0DED182A194A00DD707A /* PaddleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddleController.m; sourceTree = "<group>"; };
+		E48B9121182EAD1800C69515 /* AIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIController.h; sourceTree = "<group>"; };
+		E48B9122182EAD1800C69515 /* AIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +246,8 @@
 		DE4F80D714E153EA00655D44 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				E48B9121182EAD1800C69515 /* AIController.h */,
+				E48B9122182EAD1800C69515 /* AIController.m */,
 				15683B801826DEA100D6A9D4 /* SimpleButton.h */,
 				15683B811826DEA100D6A9D4 /* SimpleButton.m */,
 				15683B7C18259CD300D6A9D4 /* MenuScene.h */,
@@ -409,6 +414,7 @@
 				15683B77181E4A0B00D6A9D4 /* Ball.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				E48B9123182EAD1800C69515 /* AIController.m in Sources */,
 				15683B821826DEA100D6A9D4 /* SimpleButton.m in Sources */,
 				E48A0DEE182A194A00DD707A /* PaddleController.m in Sources */,
 				15683B7B181E563700D6A9D4 /* Paddle.m in Sources */,

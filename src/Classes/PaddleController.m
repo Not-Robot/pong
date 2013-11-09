@@ -7,7 +7,6 @@
 //
 
 #import "PaddleController.h"
-#import "Paddle.h"
 
 @implementation PaddleController {
 	Paddle *mPaddle;
