@@ -9,7 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface GameScene : SPSprite
-
-- (void)setAI:(BOOL)hasAI;
-
+    -(id)init:(BOOL)hasAI;
 @end

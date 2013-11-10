@@ -63,8 +63,7 @@
 }
 
 - (void)showGameScenewithAI:(BOOL)hasAI {
-    mGameScene = [[GameScene alloc] init];
-    [mGameScene setAI:hasAI];
+    mGameScene = [[GameScene alloc] init:hasAI];
     [self showScene:mGameScene];
 }
 
