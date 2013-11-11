@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Thinker.h"
 
-#define EVENT_TYPE_RIGHT_LOSS @"rightLoss"
-#define EVENT_TYPE_LEFT_LOSS @"leftLoss"
+#define PONG_BALL_VELOCITY 120
 
-@interface Ball : SPQuad
+@interface Ball : SPQuad <Thinker>
 
-- (void)paddled;
+- (void)collision:(SPPoint *)normal;
+- (void)reset;
 
 @end

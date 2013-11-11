@@ -58,6 +58,7 @@
     mBall.x = mBackground.width/2;
     mBall.y = mBackground.height/2;
     [self addChild:mBall];
+    [mThinkers addObject:mBall];
     
     mPaddleL = [[Paddle alloc] init];
     mPaddleL.x = mPaddleL.width/2;
@@ -101,8 +102,6 @@
     [self addChild:quit];
     
     [self addEventListener:@selector(onEnterFrame:) atObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
-    [self addEventListener:@selector(onRightLoss:) atObject:self forType:EVENT_TYPE_RIGHT_LOSS];
-    [self addEventListener:@selector(onLeftLoss:) atObject:self forType:EVENT_TYPE_LEFT_LOSS];
 }
 
 - (void)setScoreText {
@@ -111,16 +110,39 @@
 }
 
 - (void)onEnterFrame:(SPEnterFrameEvent *)event {
-    BOOL hitLeft = [mBall.bounds intersectsRectangle:mPaddleL.bounds];
-    BOOL hitRight = [mBall.bounds intersectsRectangle:mPaddleR.bounds];
-    
-    if (hitLeft || hitRight) {
-        if (mBall.x < mBall.width/2+mPaddleL.width) {
-            mBall.x = mBall.width+mPaddleL.width;
-        } else if (mBall.x > mBackground.width-(mBall.width/2+mPaddleR.width)) {
-            mBall.x = mBackground.width-(mBall.width/2+mPaddleR.width);
+    // This is starting to get beefy.  This block of code
+    // may be out of place, but it houses all collisions checks
+    // between all objects in our scene.  Because we are not using
+    // a physics engine, there would be too much dependancy
+    // injection going on to not have these collisions checks in
+    // a central location.  For that reason, they are all housed
+    // within the GameScene that contains all these objects anyway.
+    //
+    // This could be simplified by using a raycasting method in
+    // which the ball would look at it's next location with it's
+    // velocity ray.  If that ray intersected any object we could
+    // then use the normal from the point it struck and we would
+    // be done.  Sparrow, however, has poor support for vectors.
+    // While this is not impossible, such optimizations are not
+    // worth the investment.
+    if ([mBall.bounds intersectsRectangle:mPaddleL.bounds]) {
+        mBall.x = mPaddleL.bounds.right + mBall.width/2;
+        [mBall collision: [SPPoint pointWithPolarLength: 1.0f angle: 0.0f]];
+    } else if ([mBall.bounds intersectsRectangle:mPaddleR.bounds]) {
+        mBall.x = mPaddleR.bounds.left - mBall.width/2;
+        [mBall collision: [SPPoint pointWithPolarLength: 1.0f angle: M_PI]];
+    } else if (![mBackground.bounds containsRectangle: mBall.bounds]) {
+        if (mBall.bounds.top < mBackground.bounds.top) {
+            [mBall collision: [SPPoint pointWithPolarLength: 1.0f angle: M_PI * 0.5f]];
+        } else if (mBall.bounds.bottom > mBackground.bounds.bottom) {
+            [mBall collision: [SPPoint pointWithPolarLength: 1.0f angle: M_PI * 1.5f]];
+        } else if (mBall.bounds.left < mBackground.bounds.left) {
+            [mBall reset];
+            [self onLeftLoss];
+        } else if (mBall.bounds.right > mBackground.bounds.right) {
+            [mBall reset];
+            [self onRightLoss];
         }
-        [mBall paddled];
     }
 
     for(id thinker in mThinkers) {
@@ -132,14 +154,14 @@
     [(Game *)self.parent showMenuScene];
 }
 
-- (void)onRightLoss:(SPEvent *)event {
+- (void)onRightLoss{
     NSLog(@"Right side lost this point.");
     mLeftScore += 1;
     [self setScoreText];
     [self checkWin];
 }
 
-- (void)onLeftLoss:(SPEvent *)event {
+- (void)onLeftLoss{
     NSLog(@"Left side lost this point.");
     mRightScore += 1;
     [self setScoreText];

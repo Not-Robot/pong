@@ -9,68 +9,49 @@
 #import "Ball.h"
 
 @implementation Ball {
-
-    float xVel;
-    float yVel;
+    SPPoint *mForward;
 }
 
 - (id)init {
-    if ((self = [super initWithWidth:10 height:10 color:0xFFFFFF]))
-    {
+    if ((self = [super initWithWidth:10 height:10 color:0xFFFFFF])) {
         [self setup];
     }
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     // release any resources here
-    
 }
 
 - (void)reset {
     // init physics stuff
-    xVel = 80;
-    yVel = 80;
     self.x = Sparrow.stage.width/2;
     self.y = Sparrow.stage.height/2;
+    mForward = [mForward initWithPolarLength: 1.0f angle: M_PI * 0.25f];
 }
 
 - (void)setup {
+    mForward = [SPPoint alloc];
     [self reset];
     self.pivotY = self.height/2;
     self.pivotX = self.width/2;
-    
-    [self addEventListener:@selector(onEnterFrame:) atObject:self forType:SP_EVENT_TYPE_ENTER_FRAME];
 }
 
-- (void)paddled {
-    xVel=-xVel;
+- (void)collision:(SPPoint *)normal {
+    // Law of Reflection
+    // Solved for R in terms of vectors N and V
+    // Where R is the reflected vector
+    // N is the normal vector of the surface
+    // V is the incoming velocity vector
+    // R = V-2N(N·V)
+    mForward = [mForward subtractPoint: [normal scaleBy: 2.0f * [normal dot: mForward]]];
 }
 
-- (void) onEnterFrame:(SPEnterFrameEvent *)event {
-    self.x += xVel*event.passedTime;
-    self.y += yVel*event.passedTime;
-    
-    if (self.y > Sparrow.stage.height-self.height/2) {
-        yVel = -yVel;
-        self.y = Sparrow.stage.height-self.height/2;
-    } else if (self.y < self.height/2) {
-        yVel = -yVel;
-        self.y = self.height/2;
-    }
-    
-    if (self.x > Sparrow.stage.width-self.width/2) {
-        //xVel = -xVel;
-        [self reset];
-        // fire off right loss
-        [self dispatchEvent:[SPEvent eventWithType:EVENT_TYPE_RIGHT_LOSS bubbles:YES]];
-    } else if (self.x < self.width/2) {
-        //xVel = -xVel;
-        [self reset];
-        // fire off left loss
-        [self dispatchEvent:[SPEvent eventWithType:EVENT_TYPE_LEFT_LOSS bubbles:YES]];
-    }
+- (void) think:(float)deltaTime {
+    mForward = [mForward scaleBy: PONG_BALL_VELOCITY * deltaTime];
+    self.x += mForward.x;
+    self.y += mForward.y;
+    mForward = [mForward normalize];
 }
 
 @end
